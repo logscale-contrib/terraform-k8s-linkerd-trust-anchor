@@ -63,10 +63,8 @@ module "argohelm" {
     {
       "k8s-secrets" = {
         "tls" = {
-          "linkerd-trust-anchor" = {
-            "cert" = tls_locally_signed_cert.issuer_cert.cert_pem
-            "key"  = tls_private_key.trustanchor_key.private_key_pem
-          }
+          "crt" = tls_locally_signed_cert.issuer_cert.cert_pem
+          "key" = tls_private_key.trustanchor_key.private_key_pem
         }
       }
     }
