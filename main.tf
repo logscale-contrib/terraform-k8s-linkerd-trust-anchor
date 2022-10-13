@@ -31,7 +31,26 @@ resource "tls_locally_signed_cert" "issuer_cert" {
   ]
 }
 
-module "consul" {
+resource "tls_self_signed_cert" "trustanchor_cert" {
+  private_key_pem       = tls_private_key.trustanchor_key.private_key_pem
+  validity_period_hours = 876000
+  is_ca_certificate     = true
+
+  subject {
+    common_name = "identity.linkerd.cluster.local"
+  }
+
+  allowed_uses = [
+    "crl_signing",
+    "cert_signing",
+    "server_auth",
+    "client_auth"
+  ]
+}
+
+
+
+module "argohelm" {
   source        = "git@github.com:logscale-contrib/tf-self-managed-logscale-k8s-helm.git"
   repository    = "ghcr.io/logscale-contrib/helm-linkerd-trust-anchor/charts"
   release       = "cw-trust-anchor"
