@@ -55,7 +55,7 @@ module "argohelm" {
   repository    = "ghcr.io/logscale-contrib/helm-linkerd-trust-anchor/charts"
   release       = "cw-trust-anchor"
   chart         = "linkerd2-trust-anchor"
-  chart_version = "1.0.1"
+  chart_version = "1.0.2"
   namespace     = "linkerd"
   project       = "cluster-wide"
 
