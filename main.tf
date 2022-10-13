@@ -10,7 +10,7 @@ resource "tls_self_signed_cert" "trustanchor_cert" {
   is_ca_certificate     = true
 
   subject {
-    common_name = "identity.linkerd.cluster.local"
+    common_name = "root.linkerd.cluster.local"
   }
 
   allowed_uses = [
