@@ -54,7 +54,7 @@ module "argohelm" {
   source        = "git@github.com:logscale-contrib/tf-self-managed-logscale-k8s-helm.git"
   repository    = "ghcr.io/logscale-contrib/helm-linkerd-trust-anchor/charts"
   release       = "cw-trust-anchor"
-  chart         = "linkd2-trust-anchor"
+  chart         = "linkerd2-trust-anchor"
   chart_version = "1.0.1"
   namespace     = "linkerd"
   project       = "cluster-wide"
