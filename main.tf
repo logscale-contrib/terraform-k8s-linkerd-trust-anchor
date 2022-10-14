@@ -28,6 +28,7 @@ module "argohelm" {
   chart_version = "1.0.8"
   namespace     = "linkerd"
   project       = "cluster-wide"
+  create_namespace = false
 
   values = yamlencode(
     {
