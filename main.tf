@@ -35,6 +35,10 @@ resource "tls_self_signed_cert" "webhook_cert" {
   subject {
     common_name = "webhook.linkerd.cluster.local"
   }
+  dns_names = [
+    "webhook.linkerd.cluster.local"
+  ]
+
 
   allowed_uses = [
     "crl_signing",
@@ -45,13 +49,13 @@ resource "tls_self_signed_cert" "webhook_cert" {
 }
 
 module "argohelm" {
-  source        = "git@github.com:logscale-contrib/tf-self-managed-logscale-k8s-helm.git"
-  repository    = "ghcr.io/logscale-contrib/helm-linkerd-trust-anchor/charts"
-  release       = "cw-trust-anchor"
-  chart         = "linkerd2-trust-anchor"
-  chart_version = "1.1.0"
-  namespace     = "linkerd"
-  project       = "cluster-wide"
+  source           = "git@github.com:logscale-contrib/tf-self-managed-logscale-k8s-helm.git"
+  repository       = "ghcr.io/logscale-contrib/helm-linkerd-trust-anchor/charts"
+  release          = "cw-trust-anchor"
+  chart            = "linkerd2-trust-anchor"
+  chart_version    = "1.1.0"
+  namespace        = "linkerd"
+  project          = "cluster-wide"
   create_namespace = false
 
   values = yamlencode(
