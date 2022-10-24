@@ -26,17 +26,17 @@ resource "tls_private_key" "webhook_key" {
   ecdsa_curve = "P256"
 }
 
-
-module "argohelm" {
-  source           = "git@github.com:logscale-contrib/tf-self-managed-logscale-k8s-helm.git"
-  repository       = "ghcr.io/logscale-contrib/helm-linkerd-trust-anchor/charts"
-  release          = "cw-trust-anchor"
-  chart            = "linkerd2-trust-anchor"
-  chart_version    = "2.0.0"
-  namespace        = "linkerd"
-  project          = "cluster-wide"
-  create_namespace = false
-
+module "release" {
+  source  = "terraform-module/release/helm"
+  version = "2.8.0"
+  # insert the 3 required variables here
+  namespace  = "linkerd"
+  repository = "ghcr.io/logscale-contrib/helm-linkerd-trust-anchor/charts"
+  app = {
+    chart   = "linkerd2-trust-anchor"
+    version = "2.0.0"
+    name    = "cw-trust-anchor"
+  }
   values = yamlencode(
     {
       "tls" = {
