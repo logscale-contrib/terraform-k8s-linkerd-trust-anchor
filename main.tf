@@ -34,7 +34,7 @@ module "release" {
   repository = "oci://ghcr.io/logscale-contrib/helm-linkerd-trust-anchor/charts"
   app = {
     chart   = "linkerd2-trust-anchor"
-    version = "2.0.0"
+    version = "2.0.1"
     name    = "cw-trust-anchor"
     deploy  = 1
   }
