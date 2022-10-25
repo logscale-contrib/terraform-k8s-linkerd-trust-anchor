@@ -36,6 +36,7 @@ module "release" {
     chart   = "linkerd2-trust-anchor"
     version = "2.0.0"
     name    = "cw-trust-anchor"
+    deploy  = 1
   }
   values = [yamlencode(
     {
