@@ -31,7 +31,7 @@ module "release" {
   version = "2.8.0"
   # insert the 3 required variables here
   namespace  = "linkerd"
-  repository = "ghcr.io/logscale-contrib/helm-linkerd-trust-anchor/charts"
+  repository = "oci://ghcr.io/logscale-contrib/helm-linkerd-trust-anchor/charts"
   app = {
     chart   = "linkerd2-trust-anchor"
     version = "2.0.0"
