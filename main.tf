@@ -37,12 +37,12 @@ module "release" {
     version = "2.0.0"
     name    = "cw-trust-anchor"
   }
-  values = yamlencode(
+  values = [yamlencode(
     {
       "tls" = {
         "crt" = tls_self_signed_cert.trustanchor_cert.cert_pem
         "key" = tls_private_key.trustanchor_key.private_key_pem
       }
     }
-  )
+  )]
 }
