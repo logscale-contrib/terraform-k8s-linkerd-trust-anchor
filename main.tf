@@ -28,7 +28,7 @@ resource "tls_private_key" "webhook_key" {
 
 module "release" {
   source  = "terraform-module/release/helm"
-  version = "2.8.0"
+  version = "2.8.2"
   # insert the 3 required variables here
   namespace  = "linkerd"
   repository = "https://logscale-contrib.github.io/helm-linkerd-trust-anchor"
